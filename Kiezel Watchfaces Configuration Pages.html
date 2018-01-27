@@ -339,9 +339,6 @@ $('#showIcon2').change(function() {
 weatherSection_value_check();
 controltypes['btVibrate'] = 'dropdown';
 controltypes['btInvert'] = 'checkbox';
-
-                        var display = document.querySelector('#trialCountDownDisplay');
-            startTrialExpirationTimer(trialDurationInSeconds, display);
             
             //get a callback when the colorpicker page is loaded
             myApp.onPageBeforeAnimation("colorpick", function (page) {
@@ -566,33 +563,6 @@ configJson.btInvert = getControlValue('btInvert');
             }
         }
 
-        //trial countdown timer!
-        //http://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
-        function startTrialExpirationTimer(duration, display) {
-            var start = Date.now(),
-                diff,
-                hours,
-                minutes;
-            function timer() {
-                // get the number of seconds that have elapsed since
-                // startTimer() was called
-                diff = duration - (((Date.now() - start) / 1000) | 0);
-                trialDurationInSeconds = diff;      //store the final duration to send to the watch!
-
-                // does the same job as parseInt truncates the float
-                hours = (diff / 3600) | 0;
-                diff -= (hours*3600);
-                minutes = (diff / 60) | 0;
-
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-
-                display.textContent = "(trial ends: " + hours + "hr " + minutes + "m)";
-            };
-            // we don't want to wait a full second before the timer starts
-            timer();
-            setInterval(timer, 60000);
-        }
     </script>
     <!--</pre>
     </div>-->
